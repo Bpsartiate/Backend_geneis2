@@ -20,5 +20,9 @@ app.use('/api/protected', protectedRoutes);
 
 // Monter les routes utilisateur
 app.use('/api/auth', utilisateurRoutes);
+// Route racine pour indiquer que l'API fonctionne
+app.get('/', (req, res) => {
+	res.json({ message: 'API backend Genesis2 opérationnelle' });
+});
 
 module.exports = app;
