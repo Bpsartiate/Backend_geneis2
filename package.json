@@ -2,7 +2,10 @@
   "name": "falcon",
   "version": "3.14.0",
   "description": "Dashboard & WebApp Template",
-  "main": "gulpfile.js",
+  "main": "server.js",
+  "engines": {
+    "node": ">=18 <21"
+  },
   "scripts": {
     "start": "node server.js",
     "build": "cross-env MODE=PROD gulp build",
