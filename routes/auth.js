@@ -52,6 +52,10 @@ router.post('/demander-otp', async (req, res) => {
     utilisateur.otp_expiration = expiration;
     await utilisateur.save();
     envoyerSMS(utilisateur.telephone, `Votre code OTP est: ${otp}`);
+    // Inclure l'OTP dans la réponse uniquement en développement
+    if (process.env.NODE_ENV !== 'production') {
+      return res.status(200).json({ message: 'OTP envoyé par SMS', otp });
+    }
     res.status(200).json({ message: 'OTP envoyé par SMS' });
   } catch (error) {
     console.error('Erreur lors de la demande OTP:', error);
