@@ -1,12 +1,11 @@
 const mongoose = require('mongoose');
 
 const utilisateurSchema = new mongoose.Schema({
-  email: { type: String, required: true, unique: true },
-  nom: { type: String },
+  nom: { type: String, required: true },
+  email: { type: String, unique: true, sparse: true },
+  telephone: { type: String, unique: true, sparse: true },
   role: { type: String, required: true },
-  telephone: { type: String, required: true },
-  otp: { type: String },
-  otp_expiration: { type: Date }
+  password: { type: String, required: true }
 }, {
   timestamps: { createdAt: 'created_at', updatedAt: 'updated_at' }
 });
